@@ -34,7 +34,7 @@ const crm = new AmoCRM({
   auth: {
     client_id: 'f8cef8e7-570a-458d-bd63-17d78b560f2e', // ID интеграции
     client_secret: '4gWhvCDtNEkycxSPCtXW5DlYyc3TJt69biOIxMNYcFnGcO2Ma5Q7F3PbVVYJXHhe', // Секретный ключ
-    redirect_uri: 'http://65.20.75.136.vultrusercontent.com:9000/.netlify/functions/app/home', // Ссылка для перенаправления,
+    redirect_uri: 'http://65.20.75.136.vultrusercontent.com/.netlify/functions/app/home', // Ссылка для перенаправления,
     server : {
       port: "3001"
     }
