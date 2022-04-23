@@ -57,8 +57,6 @@ router.post('/request', async (req, res) => {
     
     
     try {
-        const fields = await crm.request.get( '/api/v4/contacts/custom_fields' )
-        console.log(fields.data._embedded.custom_fields[1].enums)
         const contact = await crm.request.post( '/api/v4/contacts', [{
           "first_name": name,
           "custom_fields_values": [
