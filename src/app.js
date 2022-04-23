@@ -46,7 +46,7 @@ router.post('/request', async (req, res) => {
         client_secret: '4gWhvCDtNEkycxSPCtXW5DlYyc3TJt69biOIxMNYcFnGcO2Ma5Q7F3PbVVYJXHhe', // Секретный ключ
         redirect_uri: 'https://heartfelt-crumble-fdad9d.netlify.app:9000/.netlify/functions/app/home', // Ссылка для перенаправления,
         server : {
-          port: "3001"
+          port: "80"
         }
       },
     });
