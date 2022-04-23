@@ -24,39 +24,39 @@ router.get("/requests", (req, res) => {
 
 console.log("here")
 
-router.get("/redirect", (req, res) => {
-  res.redirect('https://myturkey.kz');
+const crm = new AmoCRM({
+  // логин пользователя в портале, где адрес портала domain.amocrm.ru
+  domain: 'aurorainc', // может быть указан полный домен вида domain.amocrm.ru, domain.amocrm.com
+  /* 
+    Информация об интеграции (подробности подключения 
+    описаны на https://www.amocrm.ru/developers/content/oauth/step-by-step)
+  */
+  auth: {
+    client_id: '1982c4a9-034c-470d-83f8-96a8db5ee886', // ID интеграции
+    client_secret: 'DQwAiliob4n2JrZz7lPKFb9Zqqmi8e47QIVuNYKiGd7i5nNVlzqkSbawVvHHRqOX', // Секретный ключ
+    redirect_uri: 'https://65.20.75.136:9000/home', // Ссылка для перенаправления,
+    server : {
+      port: "3001"
+    }
+  },
+});
+
+
+
+router.get("/login", (req, res) => {
+  res.send(crm.connection.getAuthUrl())
+});
+
+router.get("/home", (req, res) => {
+  res.redirect('https://myturkey.kz')
 });
 
 router.post('/request', async (req, res) => {
     const name = req.body.name;
     const phone = req.body.phone;
     
-    console.log("here")
-
-    const crm = new AmoCRM({
-        // логин пользователя в портале, где адрес портала domain.amocrm.ru
-        domain: 'aurorainc', // может быть указан полный домен вида domain.amocrm.ru, domain.amocrm.com
-        /* 
-          Информация об интеграции (подробности подключения 
-          описаны на https://www.amocrm.ru/developers/content/oauth/step-by-step)
-        */
-        auth: {
-          client_id: '0cd501dd-f9d4-4203-bd8c-2c2b67ac5dd8', // ID интеграции
-          client_secret: 'JXkIcJ9RgM7oCejFVkaDg3wSPoVRDaBZQHQ2Kk11L9vI2m03T1dBAkoGrmgcd1Nz', // Секретный ключ
-          redirect_uri: 'https://heartfelt-crumble-fdad9d.netlify.app/.netlify/functions/app/redirect', // Ссылка для перенаправления,
-          server: {
-            // порт, на котором запустится сервер авторизации
-            port: 3001
-          }
-        },
-    });
-
-    console.log("here2")
     
     try {
-        const url = await crm.connection.getAuthUrl();
-        res.send(url);
         const fields = await crm.request.get( '/api/v4/contacts/custom_fields' )
         console.log(fields.data._embedded.custom_fields[1].enums)
         const contact = await crm.request.post( '/api/v4/contacts', [{
