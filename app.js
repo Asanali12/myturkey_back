@@ -34,7 +34,7 @@ app.post('/request', async (req, res) => {
         auth: {
           client_id: '0cd501dd-f9d4-4203-bd8c-2c2b67ac5dd8', // ID интеграции
           client_secret: 'JXkIcJ9RgM7oCejFVkaDg3wSPoVRDaBZQHQ2Kk11L9vI2m03T1dBAkoGrmgcd1Nz', // Секретный ключ
-          redirect_uri: 'https://eac2-188-130-155-151.eu.ngrok.io', // Ссылка для перенаправления,
+          redirect_uri: 'https://sparkling-crumble-adf4d0.netlify.app', // Ссылка для перенаправления,
           server: {
             // порт, на котором запустится сервер авторизации
             port: 3001
