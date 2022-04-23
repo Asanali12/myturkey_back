@@ -1,24 +1,28 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const AmoCRM = require( 'amocrm-js' );
+const serverless = require("serverless-http");
+
 
 console.log("here")
 
 const app = express();
 
 
-let requests = [] 
+let requests = []
+
+const router = express.Router();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/requests", (req, res, next) => {
+router.get("/requests", (req, res, next) => {
     res.json(requests);
 });
 
 console.log("here")
 
-app.post('/request', async (req, res) => {
+router.post('/request', async (req, res) => {
     const name = req.body.name;
     const phone = req.body.phone;
     
@@ -87,8 +91,10 @@ app.post('/request', async (req, res) => {
     }
 });
 
-module.exports = app;
+app.use(`/.netlify/functions/api`, router);
 
+module.exports = app;
+module.exports.handler = serverless(app);
 /*app.listen(3000, () => {
     console.log("Server running on port 3000");
 });*/
