@@ -72,7 +72,7 @@ router.post('/request', async (req, res) => {
          ]
       }]);
       const contactId = contact.data
-      console.log("contactId")
+      console.log(contactId)
       console.log(contactId._embedded.contacts[0].id)
       const response = await crm.request.post( '/api/v4/leads', [
         {
