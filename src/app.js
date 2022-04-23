@@ -32,8 +32,8 @@ const crm = new AmoCRM({
     описаны на https://www.amocrm.ru/developers/content/oauth/step-by-step)
   */
   auth: {
-    client_id: '706cc9b1-30a2-408a-b353-c0fabc86b4d1', // ID интеграции
-    client_secret: 'aRJ6CBx5bk8nlCBKyvfdCCrtXoSc6O6tax0RSCpddPnllt2KVEBzRP5lxB0GqzZm', // Секретный ключ
+    client_id: 'f8cef8e7-570a-458d-bd63-17d78b560f2e', // ID интеграции
+    client_secret: '4gWhvCDtNEkycxSPCtXW5DlYyc3TJt69biOIxMNYcFnGcO2Ma5Q7F3PbVVYJXHhe', // Секретный ключ
     redirect_uri: 'http://65.20.75.136:9000/home', // Ссылка для перенаправления,
     server : {
       port: "3001"
@@ -72,7 +72,7 @@ router.post('/request', async (req, res) => {
          ]
       }]);
       const contactId = contact.data
-      console.log(contactId)
+      console.log("contactId", contactId)
       console.log(contactId._embedded.contacts[0].id)
       const response = await crm.request.post( '/api/v4/leads', [
         {
