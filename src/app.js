@@ -24,6 +24,10 @@ router.get("/requests", (req, res) => {
 
 console.log("here")
 
+router.get("/redirect", (req, res) => {
+  res.redirect('https://myturkey.kz');
+});
+
 router.post('/request', async (req, res) => {
     const name = req.body.name;
     const phone = req.body.phone;
@@ -40,7 +44,7 @@ router.post('/request', async (req, res) => {
         auth: {
           client_id: '0cd501dd-f9d4-4203-bd8c-2c2b67ac5dd8', // ID интеграции
           client_secret: 'JXkIcJ9RgM7oCejFVkaDg3wSPoVRDaBZQHQ2Kk11L9vI2m03T1dBAkoGrmgcd1Nz', // Секретный ключ
-          redirect_uri: 'https://sparkling-crumble-adf4d0.netlify.app', // Ссылка для перенаправления,
+          redirect_uri: 'https://heartfelt-crumble-fdad9d.netlify.app/.netlify/functions/app/redirect', // Ссылка для перенаправления,
           server: {
             // порт, на котором запустится сервер авторизации
             port: 3001
