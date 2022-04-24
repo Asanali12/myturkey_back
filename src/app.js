@@ -1,8 +1,8 @@
 const express = require("express");
 const bodyParser = require('body-parser');
-const AmoCRM = require( 'amocrm-js' );
 const serverless = require("serverless-http");
 const axios = require('axios').default;
+const cors = require('cors')
 
 
 
@@ -17,6 +17,7 @@ const router = express.Router();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors())
 
 router.get("/requests", (req, res) => {
   res.json({
