@@ -9,7 +9,7 @@ const app = express();
 
 let requests = []
 
-async function getAccessToken ()  {
+/*async function getAccessToken ()  {
   
   let headers = {
     "Authorization" : ""
@@ -52,7 +52,7 @@ async function getAccessToken ()  {
     }
   });
   return headers
-}
+}*/
 
 const router = express.Router();
 
