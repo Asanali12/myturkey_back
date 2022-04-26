@@ -17,7 +17,7 @@ let requests = []
 let accessToken
 
 const headers = {
-  "Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImZkOWMwM2Y0NTA5Mjk2MGY0MWQ3MDIwMmVmZmJiZThmYWU4ZWVmZTYzMmU4OGE5Yzk5MjkxNjdjMTU5YTcwZTVhMjViZGU0YjdjYjFjMDA4In0.eyJhdWQiOiJhOTA2YzRjZi1mYWMzLTQ4ODktODhjMC1hZjlhZDZhNGI4YmYiLCJqdGkiOiJmZDljMDNmNDUwOTI5NjBmNDFkNzAyMDJlZmZiYmU4ZmFlOGVlZmU2MzJlODhhOWM5OTI5MTY3YzE1OWE3MGU1YTI1YmRlNGI3Y2IxYzAwOCIsImlhdCI6MTY1MDk0OTUzMywibmJmIjoxNjUwOTQ5NTMzLCJleHAiOjE2NTEwMzU5MzMsInN1YiI6IjcxNjIzNjYiLCJhY2NvdW50X2lkIjoyOTU0NjIzMCwic2NvcGVzIjpbInB1c2hfbm90aWZpY2F0aW9ucyIsImNybSIsIm5vdGlmaWNhdGlvbnMiXX0.IpfjRcs3IEhhrMC2vUbPnN3NQ5dO754huWWwXXqXjYJjh76apwoT43WHGig2NrLVx4Mm_AkIBjptwq722hP4IC5JNUUR3R4RbhvSD9-m0j9gMJYvHqFn8HOknJwuuitZjOoLxxZPpuZPhzXbeYHtDgSdVbNOBYZ3N-MAr6zJDUmOfyqGNs7VQGk-MC-yxROebjX6VEGfQ8FIpXkjh0o8079F3iF3UpeUjYwNUpgrW4pGRJoSB0O1x270mLFaJOOBTWKzE1Swx2GVcA7K0OtET7nkwoGIh1hyC5QX-CnYBb30zPgC87V2t38bsxov3V23sxHCokW_m4VA85YSoAxjhg"
+  "Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjAyZDZlMDlmMmFhNDcyNjM4YTVkYjI5Y2E5OGQ1NjM0MTdjM2U2MzljYTMwMjVmYTUwNzg1M2MyYjM0Nzk3MzRhN2M2NTczNGI4ZDg1M2RmIn0.eyJhdWQiOiJhOTA2YzRjZi1mYWMzLTQ4ODktODhjMC1hZjlhZDZhNGI4YmYiLCJqdGkiOiIwMmQ2ZTA5ZjJhYTQ3MjYzOGE1ZGIyOWNhOThkNTYzNDE3YzNlNjM5Y2EzMDI1ZmE1MDc4NTNjMmIzNDc5NzM0YTdjNjU3MzRiOGQ4NTNkZiIsImlhdCI6MTY1MTAxMDU3NywibmJmIjoxNjUxMDEwNTc3LCJleHAiOjE2NTEwOTY5NzcsInN1YiI6IjcxNjIzNjYiLCJhY2NvdW50X2lkIjoyOTU0NjIzMCwic2NvcGVzIjpbInB1c2hfbm90aWZpY2F0aW9ucyIsImNybSIsIm5vdGlmaWNhdGlvbnMiXX0.iSUO-urgJilWGJ_LS7yfVj-fBhB_osRHtz3qTL3pKEQ2LWZY8DjS6IB_X-jQ1BQOzkFtxjFiDyfPhCE_dTbzBeL82FaImEZBh7vZpj3J8ndrQpfcA2_riZzhTnyVm2TxJrTz13kiX_gvAAK-g3pwBoiSi_SEY_mxJPDBa4dttODaaBOr-R2d2KUNmA6jo2wwIl7XzDDQTtmtnIugOm6m5ESEZ2g3ok8FLNxWiEsUa00OXKTdtDT98XP22SbwQaivXIgkTOe-VC8lwxlcyvsZOdQzOBgYQZuBVqiUui50AFzmLPCpK0cjErXbxE3r6cqBixfd0d4WeFf1bahWcPbOgg"
 }
 
 async function getAccessToken ()  {
@@ -124,11 +124,11 @@ router.post('/request', async (req, res) => {
         headers: headers
       });
       console.log(response.data)
-      res.send(response)
+      res.send(response.data)
       //console.log( response.data['validation-errors'][0].errors );
     } catch (error) {
         console.log("error")
-        //console.log(error)
+        console.log(error)
         res.send(error)
     }
 });
