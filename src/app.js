@@ -81,56 +81,9 @@ router.get("/home", (req, res) => {
 
 router.post('/request', async (req, res) => {
     //await getAccessToken()
-    const name = req.body.name;
-    const phone = req.body.phone;
 
-    console.log("here2")
-
-    try {
-        const contact = await axios.post( 'https://aurorainc.amocrm.ru/api/v4/contacts', 
-        [{
-          "first_name": name,
-          "custom_fields_values": [
-              {
-                  "field_id": 319725,
-                  "values": [
-                      {
-                          "value": phone,
-                          "enum_code": "WORK"
-                      }
-                  ]
-              }
-         ]
-      }],
-      {
-        headers: headers
-      });
-      console.log("AAHHASHAHAHAH")
-      const contactId = contact.data
-      const response = await axios.post( 'https://aurorainc.amocrm.ru/api/v4/leads',
-      [
-        {
-          "name": name,
-          "_embedded": {
-            "contacts": [
-              {
-                "id": contactId._embedded.contacts[0].id
-              }
-            ]
-          }
-        }
-      ],
-      {
-        headers: headers
-      });
-      console.log(response.data)
-      res.send(response.data)
-      //console.log( response.data['validation-errors'][0].errors );
-    } catch (error) {
-        console.log("error")
-        console.log(error)
-        res.send(error)
-    }
+    console.log(req.body)
+    res.send({"answer" : "Success!"})
 });
 
 app.use(`/.netlify/functions/app`, router);
